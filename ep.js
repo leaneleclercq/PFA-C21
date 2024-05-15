@@ -1,6 +1,5 @@
 const puppeteer = require("puppeteer");
 const nodemailer = require("nodemailer");
-require("dotenv").config();
 
 const url =
   "https://www.etreproprio.com/immobilier-19278043-vente-maison-75m-a-saint-martin-du-tertre-saint-martin-du-tertre";
@@ -32,8 +31,8 @@ const url =
   // div[class=card-cla-search]
 
 
-await page.click("button[id=btn-contact-seller]");
-await page.waitForSelector("button[id=btn-contact-seller]");
+await page.click("button[id=btn_contact_seller]");
+await page.waitForSelector("button[id=btn_contact_seller]");
 let data = await page.evaluate(() => {
     return document.querySelector("div[id=contact_seller_realtor_user_name]").innerText, document.querySelector("div[id=contact_seller_realtor_coords]").innerText;
 });
@@ -64,5 +63,4 @@ let data = await page.evaluate(() => {
       .then(() => console.log("Message envoyé"));
   }
 
-  await browser.close();
 })();
