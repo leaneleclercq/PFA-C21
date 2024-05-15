@@ -3,7 +3,7 @@ const nodemailer = require("nodemailer");
 require("dotenv").config();
 
 const url =
-  "https://www.cdiscount.com/informatique/achat-pc-ordinateur/megaport-pc-gamer-amd-ryzen-9-3900x-12x-3-8-ghz/f-1070853-meg4260568826719.html#mpos=0|mp";
+  "https://www.etreproprio.com/immobilier-19278043-vente-maison-75m-a-saint-martin-du-tertre-saint-martin-du-tertre";
 
 (async () => {
   const browser = await puppeteer.launch({ headless: false });
@@ -29,16 +29,21 @@ const url =
   // get <body>
   // let bodyHTML = await page.evaluate(() => document.body.innerHTML);
   // console.log(bodyHTML);
+  // div[class=card-cla-search]
 
-  let data = await page.evaluate(() => {
-    return document.querySelector("span[itemprop=price]").innerText;
-  });
-  console.log("Le prix est de " + data);
-  let newData = await data.substring(0, 4);
+
+await page.click("button[id=btn-contact-seller]");
+await page.waitForSelector("button[id=btn-contact-seller]");
+let data = await page.evaluate(() => {
+    return document.querySelector("div[id=contact_seller_realtor_user_name]").innerText, document.querySelector("div[id=contact_seller_realtor_coords]").innerText;
+});
+  console.log("voici les coordonnés " + data);
+/**  let newData = await data.substring(0, 4);
 
   if (parseInt(newData) < 2400) {
     sendNotification(newData);
   }
+ */
 
   async function sendNotification(price) {
     let transporter = nodemailer.createTransport({
