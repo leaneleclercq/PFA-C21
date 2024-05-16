@@ -7,12 +7,11 @@ const url =
 (async () => {
   const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
-  await page.goto(url, { waitUntil: "networkidle2" });
-
   await page.setViewport({
     width: 1200,
     height: 10000,
   });
+  await page.goto(url, { waitUntil: "networkidle2" });
 
   // pdf
   // await page.pdf({
