@@ -1,19 +1,22 @@
 const puppeteer = require("puppeteer");
 require("dotenv").config();
 
-const url = "https://linkedin.com";
+const url = "https://www.linkedin.com/authwall";
 
 (async () => {
   const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
   await page.goto(url, { waitUntil: "networkidle2" });
 
-  // s'identifier
-  await page.click("authwall-join-form_form-toggle--bottom form-toggle");
+  // cookie
+  //await page.click("artdeco-global-alert-action__wrapper > button");
+  //data-tracking-control-name="auth_wall_desktop-login-toggle"
+  //await page.click('[data-controle-name=ga-cookie.consent.accet.v4]');
+  //await page.click("action-type=ACCEPT")
 
   // login
-  await page.type("[name=session_key]", "thomas.souly@gmail.com", { delay: 100 });
-  await page.type("[name=session_password]", process.env.INSTA_PASS, { delay: 100 });
+  await page.type('[name=session_key]', "cindy.alves0304@gmail.com", { delay: 100 });
+  await page.type('[name=session_password]', "dydylele00", { delay: 100 });
 
   await page.click("button[type=submit]");
 
@@ -25,6 +28,6 @@ const url = "https://linkedin.com";
   //await page.waitForSelector(".mt3GC > button", { visible: true });
   //await page.click(".mt3GC > button");
 
-  debugger;
+  //debugger;
   // await browser.close();
 })();
