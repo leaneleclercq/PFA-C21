@@ -1,12 +1,17 @@
 const puppeteer = require("puppeteer");
 require("dotenv").config();
 
-const url = "https://www.linkedin.com/authwall";
+const url = "https://www.linkedin.com/?trk=seo-authwall-base_nav-header-logo";
 
 (async () => {
   const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
+  await page.setViewport({
+    width: 1200,
+    height: 10000,
+  });
   await page.goto(url, { waitUntil: "networkidle2" });
+
 
   // cookie
   //await page.click("artdeco-global-alert-action__wrapper > button");
