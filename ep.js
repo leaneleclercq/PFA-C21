@@ -28,16 +28,16 @@ await page.click("button[id=btn_contact_seller]");
 await page.waitForSelector("button[id=btn_contact_seller]");
 
 let data = await page.evaluate(() => {
-  // Sélectionner les éléments et récupérer leur texte
   let userName = document.querySelector("div[id=contact_seller_realtor_user_name]").innerText;
   let coords = document.querySelector('[id="contact_seller_phone_cell"]').innerText;
-
-  // Retourner un objet contenant les valeurs
   return { userName, coords };
 });
 
 console.log("Voici les coordonnées : ", data.coords);
 console.log("Voici le nom de l'utilisateur : ", data.userName);
+
+
+module.exports = { userName: data.userName, coords: data.coords };
 
 //let data = await page.evaluate(() => {
 //  return document.querySelector("div[id=contact_seller_realtor_user_name]").innerText, document.querySelector("div[id=contact_seller_realtor_coords]").innerText;
@@ -50,7 +50,7 @@ console.log("Voici le nom de l'utilisateur : ", data.userName);
   if (parseInt(newData) < 2400) {
     sendNotification(newData);
   }
- */
+ 
 
   async function sendNotification(price) {
     let transporter = nodemailer.createTransport({
@@ -69,6 +69,6 @@ console.log("Voici le nom de l'utilisateur : ", data.userName);
         html: "Le prix de la tour est de " + price + "€",
       })
       .then(() => console.log("Message envoyé"));
-  }
+  }*/
 
 })();

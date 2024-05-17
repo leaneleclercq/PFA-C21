@@ -1,5 +1,6 @@
 const puppeteer = require("puppeteer");
 require("dotenv").config();
+const { userName, coords } = require('./ep');
 
 const url = "https://www.linkedin.com/?trk=seo-authwall-base_nav-header-logo";
 
@@ -25,8 +26,11 @@ const url = "https://www.linkedin.com/?trk=seo-authwall-base_nav-header-logo";
   await page.click("button[type=submit]");
 
   // search bar
-  await page.type('[aria-label=Recherche]', "leane leclercq", { delay: 100 }); // "data[nom], data[prénom], data[agence]"
+  await page.type('[aria-label=Recherche]', `${userName} ${coords}`, { delay: 100 }); // "data[nom], data[prénom], data[agence]"
   await page.keyboard.press('Enter');
+
+  console.log(userName);
+  console.log(coords);
 
   // research personne
   await page.click("button[class=artdeco-pill artdeco-pill--slate artdeco-pill--choice artdeco-pill--2 search-reusables__filter-pill-button search-reusables__filter-pill-button]");
