@@ -30,14 +30,17 @@ await page.waitForSelector("button[id=btn_contact_seller]");
 let data = await page.evaluate(() => {
   let userName = document.querySelector("div[id=contact_seller_realtor_user_name]").innerText;
   let coords = document.querySelector('[id="contact_seller_phone_cell"]').innerText;
-  return { userName, coords };
+  let agence = document.querySelector('[div="ep-name"]').innerText;
+  return { userName, coords, agence };
 });
 
 console.log("Voici les coordonnées : ", data.coords);
 console.log("Voici le nom de l'utilisateur : ", data.userName);
+console.log("Voici l'agence : ", data.agence);
 
 
-module.exports = { userName: data.userName, coords: data.coords };
+
+module.exports = { userName: data.userName, coords: data.coords, agence: data.agence };
 
 //let data = await page.evaluate(() => {
 //  return document.querySelector("div[id=contact_seller_realtor_user_name]").innerText, document.querySelector("div[id=contact_seller_realtor_coords]").innerText;
