@@ -13,13 +13,6 @@ const url =
   });
   await page.goto(url, { waitUntil: "networkidle2" });
 
-
-  // pdf
-  // await page.pdf({
-  //   path: "page.pdf",
-  //   format: "A4",
-  // });
-
   // image
   // await page.screenshot({
   //   path: "image.png",
