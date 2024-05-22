@@ -26,7 +26,7 @@ const url = "https://www.linkedin.com/?trk=seo-authwall-base_nav-header-logo";
   await page.click("button[type=submit]");
 
   // search bar
-  await page.type('[aria-label=Recherche]', `${userName} ${coords} ${agence}`, { delay: 100 }); // "data[nom], data[prénom], data[agence]"
+  await page.type("[aria-label=Recherche]", `${userName} ${coords} ${agence}`, { delay: 100 }); // "data[nom], data[prénom], data[agence]"
   await page.keyboard.press('Enter');
 
   console.log(userName);
